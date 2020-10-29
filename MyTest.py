@@ -1,8 +1,8 @@
 class State:
     def __init__(self, board, goal, moves=0):
         self.board = board
-        self.moves = moves
         self.goal = goal
+        self.moves = moves
     
     def get_new_board(self, i1, i2, moves):
         new_board = self.board[:]
@@ -24,10 +24,7 @@ class State:
         return result
     
     def __str__(self):
-        return str(self.board[:3]) +"\n"
-        + str(self.board[3:6]) +"\n" 
-        + str(self.board[6:]) + ""
-        "--------------------------"
+        return str(self.board[:3]) +"\n"+ str(self.board[3:6]) +"\n" + str(self.board[6:]) + "\n"+"--------------------------"
 
 
 puzzle = [1,2,3,
@@ -46,10 +43,13 @@ moves=0
 
 while len(open_queue) != 0:
 
+    """
     print("Start of openQ")
     for elem in open_queue:
+        print("Debug: ")
         print(elem)
     print("End of openQ")
+    """
 
     current = open_queue.pop(0)
     print(current)
@@ -64,4 +64,4 @@ while len(open_queue) != 0:
         if(state in closed_queue) or (state in open_queue):
             continue
         else:
-            open_queue.append(current)
+            open_queue.append(state)
